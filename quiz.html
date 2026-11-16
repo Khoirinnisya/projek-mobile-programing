@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>Sesi Kuis Aktif - SDN Taraban LMS</title>
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "tertiary-fixed-dim": "#adc6ff",
+            "surface-bright": "#f9f9ff",
+            "secondary": "#855300",
+            "secondary-container": "#fea619",
+            "on-primary": "#ffffff",
+            "inverse-surface": "#263143",
+            "primary-fixed": "#6ffbbe",
+            "on-tertiary-fixed": "#001a42",
+            "inverse-primary": "#4edea3",
+            "on-error-container": "#93000a",
+            "on-secondary-container": "#684000",
+            "on-primary-container": "#00422b",
+            "on-error": "#ffffff",
+            "secondary-fixed-dim": "#ffb95f",
+            "surface-container-high": "#dee8ff",
+            "outline": "#6c7a71",
+            "surface-tint": "#006c49",
+            "surface": "#f9f9ff",
+            "on-primary-fixed-variant": "#005236",
+            "on-primary-fixed": "#002113",
+            "on-background": "#111c2d",
+            "on-tertiary-container": "#00367a",
+            "surface-variant": "#d8e3fb",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#653e00",
+            "primary-container": "#10b981",
+            "on-tertiary-fixed-variant": "#004395",
+            "surface-container-highest": "#d8e3fb",
+            "surface-container-low": "#f0f3ff",
+            "tertiary-fixed": "#d8e2ff",
+            "background": "#f9f9ff",
+            "error": "#ba1a1a",
+            "tertiary-container": "#71a1ff",
+            "primary": "#006c49",
+            "on-surface": "#111c2d",
+            "surface-container": "#e7eeff",
+            "inverse-on-surface": "#ecf1ff",
+            "primary-fixed-dim": "#4edea3",
+            "tertiary": "#005ac2",
+            "surface-dim": "#cfdaf2",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#2a1700",
+            "on-secondary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#3c4a42",
+            "outline-variant": "#bbcabf",
+            "secondary-fixed": "#ffddb8"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-sm": "0.5rem",
+            "space-2xl": "3rem",
+            "space-md": "1rem",
+            "margin-tablet": "1.5rem",
+            "margin": "1rem",
+            "gutter": "1.25rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "gutter-desktop": "1.5rem",
+            "space-xl": "2rem",
+            "margin-desktop": "2.5rem"
+          },
+          fontFamily: {
+            "headline-lg-mobile": ["Plus Jakarta Sans", "sans-serif"],
+            "label-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-xl": ["Plus Jakarta Sans", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "stat-counter": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-xl-mobile": ["Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          fontSize: {
+            "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "800" }],
+            "label-lg": ["16px", { lineHeight: "20px", fontWeight: "700" }],
+            "headline-xl": ["40px", { lineHeight: "48px", fontWeight: "800" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "500" }],
+            "stat-counter": ["28px", { lineHeight: "32px", fontWeight: "800" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "500" }],
+            "label-sm": ["12px", { lineHeight: "16px", fontWeight: "800" }],
+            "body-sm": ["14px", { lineHeight: "20px", fontWeight: "500" }],
+            "headline-xl-mobile": ["30px", { lineHeight: "38px", fontWeight: "800" }],
+            "label-md": ["14px", { lineHeight: "18px", fontWeight: "700" }],
+            "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "700" }],
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "800" }]
+          }
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    @layer base {
+      html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+    }
+    ::-webkit-scrollbar { display: none; }
+    
+    .tactile-btn {
+      box-shadow: 0 4px 0 0 rgba(0, 108, 73, 0.4);
+      transition: all 0.15s ease-in-out;
+    }
+    .tactile-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 0 rgba(0, 108, 73, 0.4);
+    }
+  </style>
+</head>
+
+<body class="bg-[#eef2f9] font-body-md text-body-md text-on-surface flex items-center justify-center min-h-screen p-0 sm:p-4 antialiased selection:bg-primary-container selection:text-on-primary-container">
+
+  <!-- Mobile Screen Container -->
+  <div class="w-full max-w-[430px] min-h-screen sm:min-h-[880px] bg-surface sm:rounded-3xl shadow-2xl flex flex-col relative overflow-hidden border border-surface-container-high">
+
+    <!-- Top App Bar Navigation -->
+    <header class="sticky top-0 w-full z-40 bg-surface/90 backdrop-blur-md pt-safe shadow-[0_4px_16px_rgba(0,0,0,0.03)] border-b border-surface-container-low">
+      <div class="h-16 px-4 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <button 
+            aria-label="Kembali" 
+            class="w-11 h-11 flex items-center justify-center rounded-2xl bg-surface-container text-on-surface active:scale-95 transition-all hover:bg-surface-container-high cursor-pointer" 
+            onclick="goBack()"
+          >
+            <span class="material-symbols-outlined text-[22px]">arrow_back_ios_new</span>
+          </button>
+          <div class="flex items-center gap-2">
+            <img 
+              alt="Logo SDN Taraban" 
+              class="h-8 w-8 rounded-full object-contain bg-surface-container-lowest p-0.5 shadow-xs" 
+              src="https://lh3.googleusercontent.com/aida/AEtjO1VqSYcJaBSuJxEa8Xy3S_1ps0hQTrLOW53rvUsN7qB9ZSRcqjN4j2VOXFuE2-t6j8zgXmJ906erxAY7nvMwhZtjBhFB1zrpEajrCdzG6dfN9UUR3pMfrD2Av01YZwKreAzABcfx0-TSXAIt17XljDdM9-2U7OCZiw7SJma1CeBtZ8C4ocnX1YRYOmu9cdQSFkciNEb643FOr-YGT0o9nq7Thq51THQtg6ro_vDYozfrt1yMQd4fqcRwwwgI"
+            />
+            <h1 class="font-headline-sm text-headline-sm text-on-surface truncate max-w-[170px]">Sesi Kuis Aktif</h1>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center shadow-xs cursor-pointer" title="Profil Siswa" onclick="toggleStudentInfo()">
+            <span class="material-symbols-outlined text-on-primary text-[19px]">person</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col relative w-full pb-8 bg-surface overflow-y-auto">
+      <div class="flex flex-col w-full px-4 pt-4 space-y-4 max-w-lg mx-auto">
+        
+        <!-- Status & Quest Progress Header -->
+        <section class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm space-y-3 border border-surface-container/60">
+          <div class="flex items-center justify-between gap-2">
+            <!-- Countdown Timer -->
+            <div class="flex items-center gap-1.5 bg-secondary-fixed/50 px-3 py-1.5 rounded-full text-secondary">
+              <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">timer</span>
+              <span class="font-label-md text-label-md" id="timer-display">08:45</span>
+            </div>
+            <!-- Potential EXP Bounty -->
+            <div class="flex items-center gap-1.5 bg-secondary-container px-3 py-1.5 rounded-full text-on-secondary-container shadow-sm">
+              <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+              <span class="font-label-md text-label-md">+500 EXP</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Bab 3: Misi Pecahan</span>
+              <span class="font-label-md text-label-md text-primary font-bold" id="step-counter">Soal 4 dari 5</span>
+            </div>
+            <h2 class="font-headline-sm text-headline-sm text-on-surface leading-snug">
+              Tantangan Matematika: Petualangan Pecahan
+            </h2>
+          </div>
+
+          <!-- Stepper Indicator -->
+          <div class="flex items-center justify-between gap-1.5 pt-1" id="stepper-bar">
+            <!-- Step 1 Done -->
+            <div class="flex-1 h-3 rounded-full bg-primary-container relative flex items-center justify-center">
+              <span class="material-symbols-outlined text-on-primary-container text-[12px] font-bold">check</span>
+            </div>
+            <!-- Step 2 Done -->
+            <div class="flex-1 h-3 rounded-full bg-primary-container relative flex items-center justify-center">
+              <span class="material-symbols-outlined text-on-primary-container text-[12px] font-bold">check</span>
+            </div>
+            <!-- Step 3 Done -->
+            <div class="flex-1 h-3 rounded-full bg-primary-container relative flex items-center justify-center">
+              <span class="material-symbols-outlined text-on-primary-container text-[12px] font-bold">check</span>
+            </div>
+            <!-- Step 4 Active -->
+            <div class="flex-1 h-3.5 rounded-full bg-primary relative ring-2 ring-primary/20 shadow-sm flex items-center justify-center">
+              <span class="w-1.5 h-1.5 rounded-full bg-on-primary animate-pulse"></span>
+            </div>
+            <!-- Step 5 Future -->
+            <div class="flex-1 h-3 rounded-full bg-surface-container"></div>
+          </div>
+        </section>
+
+        <!-- Question Card & Graphic -->
+        <section class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm space-y-4 border border-surface-container/60">
+          <div class="bg-surface-container-low rounded-xl p-4 flex flex-col items-center justify-center relative overflow-hidden">
+            
+            <!-- Pizza / Cake Fraction SVG -->
+            <div class="relative w-44 h-44 flex items-center justify-center">
+              <svg class="w-full h-full transform -rotate-90 drop-shadow-sm transition-transform hover:rotate-0 duration-500" viewbox="0 0 120 120">
+                <!-- 8 Slices (R=50, Cx=60, Cy=60) -->
+                <!-- Slices 1,2,3 Eaten (Arsir/Highlight Emerald) -->
+                <path d="M60,60 L110,60 A50,50 0 0,1 95.35,95.35 Z" fill="#10b981" class="transition-opacity hover:opacity-85"></path>
+                <path d="M60,60 L95.35,95.35 A50,50 0 0,1 60,110 Z" fill="#10b981" class="transition-opacity hover:opacity-85"></path>
+                <path d="M60,60 L60,110 A50,50 0 0,1 24.65,95.35 Z" fill="#10b981" class="transition-opacity hover:opacity-85"></path>
+                <!-- Remaining 5 Slices (Soft warm cake slice) -->
+                <path d="M60,60 L24.65,95.35 A50,50 0 0,1 10,60 Z" fill="#ffddb8"></path>
+                <path d="M60,60 L10,60 A50,50 0 0,1 24.65,24.65 Z" fill="#ffe7cc"></path>
+                <path d="M60,60 L24.65,24.65 A50,50 0 0,1 60,10 Z" fill="#ffddb8"></path>
+                <path d="M60,60 L60,10 A50,50 0 0,1 95.35,24.65 Z" fill="#ffe7cc"></path>
+                <path d="M60,60 L95.35,24.65 A50,50 0 0,1 110,60 Z" fill="#ffddb8"></path>
+                
+                <!-- Separator radial lines -->
+                <circle cx="60" cy="60" fill="none" r="50" stroke="#ffffff" stroke-width="2"></circle>
+                <line stroke="#ffffff" stroke-width="2" x1="60" x2="110" y1="60" y2="60"></line>
+                <line stroke="#ffffff" stroke-width="2" x1="60" x2="95.35" y1="60" y2="95.35"></line>
+                <line stroke="#ffffff" stroke-width="2" x1="60" x2="60" y1="60" y2="110"></line>
+                <line stroke="#ffffff" stroke-width="2" x1="60" x2="24.65" y1="60" y2="95.35"></line>
+                <line stroke="#ffffff" stroke-width="2" x1="60" x2="10" y1="60" y2="60"></line>
+                <line stroke="#ffffff" stroke-width="2" x1="60" x2="24.65" y1="60" y2="24.65"></line>
+                <line stroke="#ffffff" stroke-width="2" x1="60" x2="60" y1="60" y2="10"></line>
+                <line stroke="#ffffff" stroke-width="2" x1="60" x2="95.35" y1="60" y2="24.65"></line>
+                <circle cx="60" cy="60" fill="#ffffff" r="5"></circle>
+              </svg>
+            </div>
+            
+            <!-- Legend Indicator -->
+            <div class="flex items-center gap-4 mt-2">
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-full bg-primary-container inline-block shadow-2xs"></span>
+                <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Dimakan Budi (3)</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-full bg-secondary-fixed inline-block shadow-2xs"></span>
+                <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Sisa Kue (5)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Problem narrative text -->
+          <p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            Ibu memotong 1 loyang kue bolu menjadi <strong>8 bagian sama besar</strong>. Budi memakan <strong>3 potong</strong> kue tersebut. Berapakah nilai pecahan bagian kue yang dimakan Budi?
+          </p>
+        </section>
+
+        <!-- Interactive Quiz Options (A, B, C, D) -->
+        <section class="space-y-2.5" id="options-group">
+          <!-- Option A (Active Selected State) -->
+          <button 
+            class="quiz-option w-full p-3.5 rounded-2xl bg-surface-container-lowest text-left flex items-center justify-between shadow-xs transition-all duration-150 transform active:scale-98 border-2 border-primary bg-primary/5 text-primary cursor-pointer" 
+            data-key="A" 
+            data-correct="true" 
+            onclick="selectOption(this)" 
+            type="button"
+          >
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm shadow-xs font-bold">
+                A
+              </div>
+              <span class="font-headline-sm text-headline-sm font-bold text-on-surface">3/8</span>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-xs">
+              <span class="material-symbols-outlined text-[20px] font-bold">check</span>
+            </div>
+          </button>
+
+          <!-- Option B -->
+          <button 
+            class="quiz-option w-full p-3.5 rounded-2xl bg-surface-container-lowest text-left flex items-center justify-between shadow-xs transition-all duration-150 transform active:scale-98 border-2 border-transparent hover:bg-surface-container-low cursor-pointer" 
+            data-key="B" 
+            data-correct="false" 
+            onclick="selectOption(this)" 
+            type="button"
+          >
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-surface-container text-on-surface flex items-center justify-center font-headline-sm text-headline-sm font-bold">
+                B
+              </div>
+              <span class="font-headline-sm text-headline-sm font-bold text-on-surface">5/8</span>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-surface-container text-transparent flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]">done</span>
+            </div>
+          </button>
+
+          <!-- Option C -->
+          <button 
+            class="quiz-option w-full p-3.5 rounded-2xl bg-surface-container-lowest text-left flex items-center justify-between shadow-xs transition-all duration-150 transform active:scale-98 border-2 border-transparent hover:bg-surface-container-low cursor-pointer" 
+            data-key="C" 
+            data-correct="false" 
+            onclick="selectOption(this)" 
+            type="button"
+          >
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-surface-container text-on-surface flex items-center justify-center font-headline-sm text-headline-sm font-bold">
+                C
+              </div>
+              <span class="font-headline-sm text-headline-sm font-bold text-on-surface">1/8</span>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-surface-container text-transparent flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]">done</span>
+            </div>
+          </button>
+
+          <!-- Option D -->
+          <button 
+            class="quiz-option w-full p-3.5 rounded-2xl bg-surface-container-lowest text-left flex items-center justify-between shadow-xs transition-all duration-150 transform active:scale-98 border-2 border-transparent hover:bg-surface-container-low cursor-pointer" 
+            data-key="D" 
+            data-correct="false" 
+            onclick="selectOption(this)" 
+            type="button"
+          >
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-surface-container text-on-surface flex items-center justify-center font-headline-sm text-headline-sm font-bold">
+                D
+              </div>
+              <span class="font-headline-sm text-headline-sm font-bold text-on-surface">8/3</span>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-surface-container text-transparent flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]">done</span>
+            </div>
+          </button>
+        </section>
+
+        <!-- Gamification Rules & Reward Banner -->
+        <section class="bg-surface-container-high/60 rounded-2xl p-3.5 space-y-2 border border-surface-container">
+          <div class="flex items-center gap-2 text-primary font-label-md text-label-md">
+            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+            <span>Target Misi &amp; Hadiah Lencana</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-on-surface">
+            <div class="bg-surface-container-lowest p-2.5 rounded-xl flex items-center gap-2 shadow-2xs">
+              <span class="material-symbols-outlined text-secondary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+              <div>
+                <p class="font-label-sm text-label-sm text-on-surface-variant font-medium">Sempurna (100)</p>
+                <p class="font-label-md text-label-md font-bold text-primary">+500 EXP</p>
+              </div>
+            </div>
+            <div class="bg-surface-container-lowest p-2.5 rounded-xl flex items-center gap-2 shadow-2xs">
+              <span class="material-symbols-outlined text-tertiary text-[20px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+              <div>
+                <p class="font-label-sm text-label-sm text-on-surface-variant font-medium">Lencana Khusus</p>
+                <p class="font-label-md text-label-md font-bold text-on-surface truncate">Ahli Pecahan</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Main Action Button -->
+        <div class="pt-2 pb-6">
+          <button 
+            id="btn-action"
+            class="w-full h-14 bg-primary hover:bg-primary/95 text-on-primary font-headline-sm text-headline-sm rounded-2xl flex items-center justify-center gap-2 shadow-md tactile-btn cursor-pointer" 
+            onclick="handleSubmitOrNext()" 
+            type="button"
+          >
+            <span>Periksa &amp; Lanjut Soal ➔</span>
+          </button>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Floating Reward Preview Modal -->
+    <div class="fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-xs flex items-center justify-center p-4 hidden" id="reward-modal">
+      <div class="bg-surface-container-lowest rounded-3xl p-6 w-full max-w-sm text-center shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-200 border border-surface-container">
+        
+        <div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full mx-auto flex items-center justify-center shadow-lg relative">
+          <span class="material-symbols-outlined text-[44px]" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+          <span class="absolute -top-1 -right-1 text-2xl animate-bounce">✨</span>
+        </div>
+
+        <div class="space-y-1">
+          <span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider font-extrabold inline-block">
+            Level Up Ready!
+          </span>
+          <h3 class="font-headline-md text-headline-md text-on-surface font-extrabold">Hebat Sekali!</h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">
+            Jawabanmu tepat! Kamu telah menyelesaikan tantangan konsep pecahan dasar.
+          </p>
+        </div>
+
+        <!-- XP & Badge Rewards Earned -->
+        <div class="bg-surface-container-low rounded-2xl p-4 space-y-3 text-left border border-surface-container">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-secondary text-[22px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+              <span class="font-label-md text-label-md text-on-surface font-semibold">EXP Diperoleh</span>
+            </div>
+            <span class="font-stat-counter text-stat-counter text-primary font-extrabold">+500 EXP</span>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-surface-container">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-tertiary text-[22px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+              <span class="font-label-md text-label-md text-on-surface font-semibold">Lencana Terbuka</span>
+            </div>
+            <span class="font-label-md text-label-md text-secondary font-bold">🎖️ Ahli Matematika</span>
+          </div>
+        </div>
+
+        <!-- Action in modal -->
+        <div class="space-y-2 pt-2">
+          <button 
+            class="w-full h-12 bg-primary text-on-primary font-label-lg text-label-lg rounded-xl shadow-md active:scale-95 transition-transform flex items-center justify-center gap-2 cursor-pointer font-bold" 
+            onclick="finishAndRedirect()" 
+            type="button"
+          >
+            <span>Klaim &amp; Selesaikan Kuis</span>
+            <span>🚀</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Interactive Logic & Backend Submission -->
+  <script>
+    const API_URL = 'http://localhost:5000/api';
+    let selectedAnswer = 'A';
+    let timeLeft = 8 * 60 + 45; // 08:45 in seconds
+
+    // Countdown Timer logic
+    const timerEl = document.getElementById('timer-display');
+    const timerInterval = setInterval(() => {
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        timerEl.textContent = '00:00';
+        handleSubmitOrNext();
+        return;
+      }
+      timeLeft--;
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }, 1000);
+
+    function selectOption(button) {
+      const allOptions = document.querySelectorAll('.quiz-option');
+      allOptions.forEach(opt => {
+        opt.classList.remove('border-primary', 'bg-primary/5', 'text-primary');
+        opt.classList.add('border-transparent');
+        
+        const badge = opt.querySelector('div:first-child > div');
+        const check = opt.querySelector('div:last-child');
+        
+        badge.classList.remove('bg-primary', 'text-on-primary');
+        badge.classList.add('bg-surface-container', 'text-on-surface');
+        
+        check.classList.remove('bg-primary-container', 'text-on-primary-container');
+        check.classList.add('bg-surface-container', 'text-transparent');
+      });
+
+      button.classList.remove('border-transparent');
+      button.classList.add('border-primary', 'bg-primary/5', 'text-primary');
+
+      const activeBadge = button.querySelector('div:first-child > div');
+      const activeCheck = button.querySelector('div:last-child');
+      
+      activeBadge.classList.remove('bg-surface-container', 'text-on-surface');
+      activeBadge.classList.add('bg-primary', 'text-on-primary');
+      
+      activeCheck.classList.remove('bg-surface-container', 'text-transparent');
+      activeCheck.classList.add('bg-primary-container', 'text-on-primary-container');
+
+      selectedAnswer = button.getAttribute('data-key');
+    }
+
+    async function handleSubmitOrNext() {
+      const btn = document.getElementById('btn-action');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-xl">sync</span><span>Mengevaluasi Jawaban...</span>';
+      btn.disabled = true;
+
+      const token = localStorage.getItem('lms_token');
+
+      // Coba submit ke backend jika terotentikasi
+      if (token) {
+        try {
+          const response = await fetch(`${API_URL}/quizzes/submit`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              id_module: 3,
+              answers: [
+                { id_quiz: 5, answer: selectedAnswer }
+              ]
+            })
+          });
+
+          const resData = await response.json();
+          if (response.ok && resData.success) {
+            console.log('Quiz submitted successfully to backend:', resData);
+          }
+        } catch (err) {
+          console.warn('Backend quiz submit error or offline, fallback to client preview:', err.message);
+        }
+      }
+
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        openRewardModal();
+      }, 600);
+    }
+
+    function openRewardModal() {
+      const modal = document.getElementById('reward-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeRewardModal() {
+      const modal = document.getElementById('reward-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function finishAndRedirect() {
+      closeRewardModal();
+      // Arahkan kembali ke Dasbor Petualang
+      window.location.href = 'dashboard.html';
+    }
+
+    function goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = 'dashboard.html';
+      }
+    }
+
+    function toggleStudentInfo() {
+      const userRaw = localStorage.getItem('lms_user') || localStorage.getItem('lms_simulated_user');
+      if (userRaw) {
+        const u = JSON.parse(userRaw);
+        alert(`Petualang: ${u.nama_lengkap || 'Budi Santoso'}\nPeran: ${u.role}\nKelas: 5A`);
+      } else {
+        alert('Petualang Cilik: Budi Santoso (Kelas 5A)\nEXP: 1.250 | Level 3');
+      }
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html class="h-full" lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta content="mobile_blank" name="shell-type"/>
+  <title>SDN Taraban LMS - Masuk Petualangan Belajar</title>
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-dim": "#cfdaf2",
+            "surface-bright": "#f9f9ff",
+            "surface": "#f9f9ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#dee8ff",
+            "secondary-fixed": "#ffddb8",
+            "tertiary-fixed": "#d8e2ff",
+            "surface-tint": "#006c49",
+            "secondary-container": "#fea619",
+            "outline-variant": "#bbcabf",
+            "primary-fixed": "#6ffbbe",
+            "on-error": "#ffffff",
+            "tertiary-fixed-dim": "#adc6ff",
+            "error-container": "#ffdad6",
+            "tertiary": "#005ac2",
+            "surface-variant": "#d8e3fb",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed-variant": "#005236",
+            "on-secondary-container": "#684000",
+            "on-tertiary-fixed-variant": "#004395",
+            "surface-container-low": "#f0f3ff",
+            "tertiary-container": "#71a1ff",
+            "surface-container": "#e7eeff",
+            "on-primary-fixed": "#002113",
+            "on-primary-container": "#00422b",
+            "secondary-fixed-dim": "#ffb95f",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#653e00",
+            "inverse-surface": "#263143",
+            "on-surface": "#111c2d",
+            "background": "#f9f9ff",
+            "on-tertiary-fixed": "#001a42",
+            "on-tertiary": "#ffffff",
+            "primary-container": "#10b981",
+            "primary-fixed-dim": "#4edea3",
+            "surface-container-highest": "#d8e3fb",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#ecf1ff",
+            "on-tertiary-container": "#00367a",
+            "outline": "#6c7a71",
+            "secondary": "#855300",
+            "inverse-primary": "#4edea3",
+            "on-secondary-fixed": "#2a1700",
+            "on-background": "#111c2d",
+            "primary": "#006c49",
+            "on-surface-variant": "#3c4a42",
+            "error": "#ba1a1a"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-2xl": "3rem",
+            "margin-desktop": "2.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.25rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "gutter-desktop": "1.5rem",
+            "margin-tablet": "1.5rem"
+          },
+          fontFamily: {
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-xl-mobile": ["Plus Jakarta Sans", "sans-serif"],
+            "stat-counter": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-lg-mobile": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-xl": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          fontSize: {
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "500" }],
+            "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "700" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "500" }],
+            "label-md": ["14px", { lineHeight: "18px", fontWeight: "700" }],
+            "body-sm": ["14px", { lineHeight: "20px", fontWeight: "500" }],
+            "headline-xl-mobile": ["30px", { lineHeight: "38px", fontWeight: "800" }],
+            "stat-counter": ["28px", { lineHeight: "32px", fontWeight: "800" }],
+            "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "800" }],
+            "headline-xl": ["40px", { lineHeight: "48px", fontWeight: "800" }],
+            "label-sm": ["12px", { lineHeight: "16px", fontWeight: "800" }],
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+            "label-lg": ["16px", { lineHeight: "20px", fontWeight: "700" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "800" }]
+          }
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    @layer base {
+      html, body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+    }
+    ::-webkit-scrollbar { display: none; }
+    
+    .tactile-btn {
+      box-shadow: 0 4px 0 0 rgba(0, 108, 73, 0.4);
+      transition: all 0.15s ease-in-out;
+    }
+    .tactile-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 0 rgba(0, 108, 73, 0.4);
+    }
+  </style>
+</head>
+
+<body class="bg-[#eef2f9] font-body-md text-body-md text-on-surface min-h-screen flex items-center justify-center p-0 sm:p-4">
+  <!-- Mobile Screen Container -->
+  <main class="w-full max-w-[430px] min-h-screen sm:min-h-[880px] bg-surface sm:rounded-3xl shadow-2xl flex flex-col relative overflow-hidden pt-safe pb-safe border border-surface-container-high">
+    
+    <!-- Top Decorative Gradient Glow -->
+    <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-primary-fixed/30 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="flex flex-col w-full px-margin pb-space-2xl space-y-space-lg select-none relative z-10">
+      
+      <!-- Brand Showcase & Logo Header -->
+      <header class="flex flex-col items-center text-center pt-space-sm relative">
+        <!-- Floating gamified star sparkles -->
+        <div class="relative flex items-center justify-center mb-space-sm">
+          <div class="absolute -top-2 -left-4 w-7 h-7 text-secondary-container animate-pulse pointer-events-none">
+            <svg fill="currentColor" viewbox="0 0 24 24">
+              <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.3 7.2-6.3-4.5-6.3 4.5 2.3-7.2-6-4.8h7.6z"></path>
+            </svg>
+          </div>
+          <div class="absolute -bottom-1 -right-3 w-5 h-5 text-tertiary-container pointer-events-none">
+            <svg fill="currentColor" viewbox="0 0 24 24">
+              <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.3 7.2-6.3-4.5-6.3 4.5 2.3-7.2-6-4.8h7.6z"></path>
+            </svg>
+          </div>
+          
+          <!-- Glowing Halo Base for Logo -->
+          <div class="w-32 h-32 rounded-full bg-surface-container flex items-center justify-center shadow-lg relative p-1.5 ring-4 ring-primary/10">
+            <div class="w-full h-full rounded-full bg-surface-container-lowest flex items-center justify-center overflow-hidden">
+              <img 
+                alt="SDN Taraban Gamified LMS Logo" 
+                class="w-full h-full object-contain p-1 transform hover:scale-105 transition-transform" 
+                src="https://lh3.googleusercontent.com/aida/AEtjO1VqSYcJaBSuJxEa8Xy3S_1ps0hQTrLOW53rvUsN7qB9ZSRcqjN4j2VOXFuE2-t6j8zgXmJ906erxAY7nvMwhZtjBhFB1zrpEajrCdzG6dfN9UUR3pMfrD2Av01YZwKreAzABcfx0-TSXAIt17XljDdM9-2U7OCZiw7SJma1CeBtZ8C4ocnX1YRYOmu9cdQSFkciNEb643FOr-YGT0o9nq7Thq51THQtg6ro_vDYozfrt1yMQd4fqcRwwwgI"
+              />
+            </div>
+          </div>
+        </div>
+        
+        <!-- Title & Welcoming Tagline -->
+        <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight mb-1">
+          SDN Taraban LMS
+        </h1>
+        <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs flex items-center justify-center gap-1.5">
+          <span>Mulai Petualangan Belajar &amp; Raih EXP Tertinggi!</span>
+          <span class="text-base">🚀</span>
+        </p>
+      </header>
+
+      <!-- Role Switcher Segmented Control -->
+      <section class="w-full bg-surface-container-high p-1.5 rounded-full flex relative shadow-inner">
+        <button 
+          id="tab-student" 
+          onclick="switchRole('student')" 
+          type="button"
+          class="flex-1 py-2.5 px-3 rounded-full flex items-center justify-center gap-2 bg-primary-container text-on-primary font-label-md text-label-md shadow-md transition-all duration-200 active:scale-95"
+        >
+          <span class="text-lg">🎒</span>
+          <span>Siswa (Murid)</span>
+        </button>
+        <button 
+          id="tab-teacher" 
+          onclick="switchRole('teacher')" 
+          type="button"
+          class="flex-1 py-2.5 px-3 rounded-full flex items-center justify-center gap-2 text-on-surface-variant font-label-md text-label-md transition-all duration-200 active:scale-95 hover:text-on-surface"
+        >
+          <span class="text-lg">👩‍🏫</span>
+          <span>Guru / Wali</span>
+        </button>
+      </section>
+
+      <!-- Login Card Form Container -->
+      <div class="bg-surface-container-lowest rounded-2xl p-gutter shadow-md flex flex-col space-y-space-md border border-surface-container/60">
+        <form class="space-y-space-md" id="loginForm" onsubmit="event.preventDefault(); triggerLogin();">
+          
+          <!-- Field 1: User Identifier (NIS / NIP) -->
+          <div class="flex flex-col space-y-1.5">
+            <div class="flex items-center justify-between">
+              <label class="font-label-md text-label-md text-on-surface flex items-center gap-1.5" for="username-input" id="id-label">
+                <span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">badge</span>
+                <span>Nomor Induk Siswa (NIS)</span>
+              </label>
+              <span class="font-label-sm text-label-sm text-primary font-bold bg-primary-fixed/40 px-2 py-0.5 rounded-full">
+                Wajib
+              </span>
+            </div>
+            <div class="relative flex items-center">
+              <input 
+                class="w-full h-12 px-4 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline-variant outline-none border border-transparent transition-all duration-150 focus:border-primary focus:bg-surface-container-lowest focus:shadow-md" 
+                id="username-input" 
+                inputmode="numeric" 
+                placeholder="Contoh: 10501" 
+                required 
+                type="text"
+                autocomplete="username"
+              />
+            </div>
+            <!-- Helpful Hint / Tooltip -->
+            <p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 pl-1" id="id-hint">
+              <span class="material-symbols-outlined text-xs text-outline">info</span>
+              <span>NIS tertera di rapor atau kartu pelajar</span>
+            </p>
+          </div>
+
+          <!-- Field 2: Secret PIN / Password -->
+          <div class="flex flex-col space-y-1.5">
+            <div class="flex items-center justify-between">
+              <label class="font-label-md text-label-md text-on-surface flex items-center gap-1.5" for="password-input">
+                <span class="material-symbols-outlined text-secondary-container text-lg" style="font-variation-settings: 'FILL' 1;">key</span>
+                <span id="pwd-label">Kata Sandi / PIN Rahasia</span>
+              </label>
+            </div>
+            <div class="relative flex items-center">
+              <input 
+                class="w-full h-12 pl-4 pr-12 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline-variant outline-none border border-transparent transition-all duration-150 focus:border-primary focus:bg-surface-container-lowest focus:shadow-md tracking-widest" 
+                id="password-input" 
+                placeholder="••••••••" 
+                required 
+                type="password"
+                autocomplete="current-password"
+              />
+              <button 
+                aria-label="Tampilkan atau sembunyikan kata sandi" 
+                class="absolute right-3 p-1.5 text-outline hover:text-on-surface focus:outline-none flex items-center justify-center transition-colors" 
+                onclick="togglePasswordVisibility()" 
+                type="button"
+              >
+                <span class="material-symbols-outlined text-xl" id="eye-icon">visibility</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Options Row: Remember Me & Reset Link -->
+          <div class="flex items-center justify-between pt-1">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input checked="" class="w-5 h-5 rounded accent-primary cursor-pointer" type="checkbox" id="remember-me"/>
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Ingat saya</span>
+            </label>
+            <button 
+              class="font-label-sm text-label-sm text-tertiary font-bold hover:underline flex items-center gap-1 cursor-pointer" 
+              onclick="openHelpModal()" 
+              type="button"
+            >
+              <span class="material-symbols-outlined text-sm">help</span>
+              <span>Bantuan Masuk?</span>
+            </button>
+          </div>
+
+          <!-- Alert / Error Message Banner (Hidden by default) -->
+          <div id="login-error-box" class="hidden p-3 rounded-xl bg-error-container text-on-error-container text-xs font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">error</span>
+            <span id="login-error-msg">Nomor NIS atau kata sandi belum sesuai.</span>
+          </div>
+
+          <!-- Primary Action CTA Button: Tactile 3D Depth Button -->
+          <div class="pt-space-xs">
+            <button 
+              class="w-full h-14 rounded-2xl bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-2 shadow-lg tactile-btn cursor-pointer" 
+              id="btn-submit" 
+              type="submit"
+            >
+              <span>Mulai Petualangan!</span>
+              <span class="text-xl">🎮</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Quick Demo Mode Shortcut -->
+        <div class="pt-space-xs">
+          <button 
+            id="demo-btn"
+            class="w-full py-3 px-3 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container transition-all active:scale-98 text-left border border-surface-container-high" 
+            onclick="fillDemoAccount()" 
+            type="button"
+          >
+            <span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">bolt</span>
+            <span class="truncate" id="demo-btn-label">Coba Akun Demo: <strong class="text-primary font-bold">Budi Santoso (5A)</strong></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Gamified Daily Quest & Streak Perk Banner -->
+      <section class="w-full bg-secondary-fixed rounded-2xl p-space-md shadow-sm flex items-center gap-3 relative overflow-hidden border border-secondary-fixed-dim/50">
+        <div class="w-11 h-11 rounded-full bg-secondary-container flex items-center justify-center shrink-0 shadow-md">
+          <span class="material-symbols-outlined text-on-secondary-container text-2xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1.5 mb-0.5">
+            <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-secondary-fixed-variant font-bold">Bonus Petualangan</span>
+            <span class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-1.5 py-0.2 rounded-full font-bold">+50 EXP</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-secondary-fixed leading-tight">
+            Masuk hari ini untuk mempertahankan <strong>Streak 5 Hari</strong> dan buka lencana baru!
+          </p>
+        </div>
+      </section>
+
+      <!-- Academic Curriculum Credentials / Trust Badge -->
+      <footer class="flex flex-col items-center justify-center text-center space-y-2 pt-space-xs">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+          <span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+          <span>Koneksi Aman &amp; Terlindungi • SDN Taraban</span>
+        </div>
+        <p class="font-label-sm text-label-sm text-outline">
+          Kurikulum Merdeka Terintegrasi Gamifikasi Pembelajaran
+        </p>
+      </footer>
+    </div>
+
+    <!-- Help Modal Dialog -->
+    <div id="help-modal" class="fixed inset-0 bg-black/40 backdrop-blur-xs hidden items-center justify-center p-4 z-50">
+      <div class="bg-surface-container-lowest max-w-sm w-full rounded-2xl p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-200">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-tertiary-container/30 flex items-center justify-center text-tertiary">
+            <span class="material-symbols-outlined">help</span>
+          </div>
+          <div>
+            <h3 class="font-headline-sm text-headline-sm text-on-surface">Pusat Bantuan</h3>
+            <p class="font-body-sm text-xs text-on-surface-variant">LMS Gamifikasi SDN Taraban</p>
+          </div>
+        </div>
+        
+        <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Jika kamu lupa NIS atau Kata Sandi, jangan khawatir! Silakan minta bantuan kepada <strong>Wali Kelas</strong> atau <strong>Bapak Rofi (Guru)</strong> di sekolah untuk melihat akunmu.
+        </p>
+
+        <div class="p-3 bg-surface-container-low rounded-xl text-xs space-y-1">
+          <p class="font-bold text-on-surface">Akun Bawaan Latihan:</p>
+          <p>🎒 <strong>Siswa:</strong> NIS <code class="bg-surface-container px-1 rounded">10501</code> | PIN <code class="bg-surface-container px-1 rounded">siswa123</code></p>
+          <p>👩‍🏫 <strong>Guru:</strong> NIP <code class="bg-surface-container px-1 rounded">198501012010011001</code> | PIN <code class="bg-surface-container px-1 rounded">guru123</code></p>
+        </div>
+
+        <button 
+          onclick="closeHelpModal()" 
+          class="w-full py-2.5 rounded-xl bg-primary-container text-on-primary font-label-md text-label-md shadow"
+        >
+          Mengerti, Terima Kasih!
+        </button>
+      </div>
+    </div>
+
+    <!-- Success Modal Notification -->
+    <div id="success-modal" class="fixed inset-0 bg-black/50 backdrop-blur-xs hidden items-center justify-center p-4 z-50">
+      <div class="bg-surface-container-lowest max-w-sm w-full rounded-3xl p-6 shadow-2xl text-center space-y-4">
+        <div class="w-20 h-20 mx-auto rounded-full bg-primary-fixed flex items-center justify-center shadow-inner">
+          <span class="text-4xl animate-bounce">🎉</span>
+        </div>
+        <div>
+          <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-extrabold" id="success-title">
+            Selamat Datang!
+          </h3>
+          <p class="font-body-md text-body-md text-on-surface font-bold mt-1" id="success-name">
+            Budi Santoso
+          </p>
+          <p class="font-body-sm text-xs text-on-surface-variant mt-1" id="success-role-desc">
+            Level 3 • Petualang Cilik (1.250 EXP)
+          </p>
+        </div>
+        <div class="p-3 bg-secondary-fixed/50 rounded-xl text-sm font-bold text-on-secondary-fixed flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-secondary-container">military_tech</span>
+          <span>Misi Harian Tersedia: Kuis Pecahan</span>
+        </div>
+        <p class="text-xs text-outline italic">Mengarahkan ke Ruang Petualangan...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Interactive Client & Backend Integration Logic -->
+  <script>
+    const API_URL = 'http://localhost:5000/api';
+    let currentRole = 'student';
+
+    function switchRole(role) {
+      currentRole = role;
+      const studentBtn = document.getElementById('tab-student');
+      const teacherBtn = document.getElementById('tab-teacher');
+      const idLabel = document.getElementById('id-label');
+      const idHint = document.getElementById('id-hint');
+      const usernameInput = document.getElementById('username-input');
+      const submitBtn = document.getElementById('btn-submit');
+      const demoBtnLabel = document.getElementById('demo-btn-label');
+      const errorBox = document.getElementById('login-error-box');
+
+      errorBox.classList.add('hidden');
+
+      if (role === 'student') {
+        studentBtn.className = 'flex-1 py-2.5 px-3 rounded-full flex items-center justify-center gap-2 bg-primary-container text-on-primary font-label-md text-label-md shadow-md transition-all duration-200 active:scale-95';
+        teacherBtn.className = 'flex-1 py-2.5 px-3 rounded-full flex items-center justify-center gap-2 text-on-surface-variant font-label-md text-label-md transition-all duration-200 active:scale-95 hover:text-on-surface';
+        
+        idLabel.innerHTML = '<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: \'FILL\' 1;">badge</span><span>Nomor Induk Siswa (NIS)</span>';
+        idHint.innerHTML = '<span class="material-symbols-outlined text-xs text-outline">info</span><span>NIS tertera di rapor atau kartu pelajar</span>';
+        usernameInput.placeholder = 'Contoh: 10501';
+        submitBtn.innerHTML = '<span>Mulai Petualangan!</span><span class="text-xl">🎮</span>';
+        demoBtnLabel.innerHTML = 'Coba Akun Demo: <strong class="text-primary font-bold">Budi Santoso (5A)</strong>';
+      } else {
+        teacherBtn.className = 'flex-1 py-2.5 px-3 rounded-full flex items-center justify-center gap-2 bg-primary-container text-on-primary font-label-md text-label-md shadow-md transition-all duration-200 active:scale-95';
+        studentBtn.className = 'flex-1 py-2.5 px-3 rounded-full flex items-center justify-center gap-2 text-on-surface-variant font-label-md text-label-md transition-all duration-200 active:scale-95 hover:text-on-surface';
+        
+        idLabel.innerHTML = '<span class="material-symbols-outlined text-tertiary text-lg" style="font-variation-settings: \'FILL\' 1;">school</span><span>NIP / Akun Guru</span>';
+        idHint.innerHTML = '<span class="material-symbols-outlined text-xs text-outline">info</span><span>Gunakan NIP resmi atau akun kedinasan</span>';
+        usernameInput.placeholder = 'Contoh: 198501012010011001';
+        submitBtn.innerHTML = '<span>Masuk Ruang Guru</span><span class="text-xl">📖</span>';
+        demoBtnLabel.innerHTML = 'Coba Akun Demo: <strong class="text-tertiary font-bold">Bapak Rofi, S.Pd. (Guru)</strong>';
+      }
+    }
+
+    function togglePasswordVisibility() {
+      const pwd = document.getElementById('password-input');
+      const eye = document.getElementById('eye-icon');
+      if (pwd.type === 'password') {
+        pwd.type = 'text';
+        eye.textContent = 'visibility_off';
+      } else {
+        pwd.type = 'password';
+        eye.textContent = 'visibility';
+      }
+    }
+
+    function fillDemoAccount() {
+      const usernameInput = document.getElementById('username-input');
+      const passwordInput = document.getElementById('password-input');
+      
+      if (currentRole === 'student') {
+        usernameInput.value = '10501';
+        passwordInput.value = 'siswa123';
+      } else {
+        usernameInput.value = '198501012010011001';
+        passwordInput.value = 'guru123';
+      }
+
+      usernameInput.classList.add('bg-primary-fixed/40');
+      passwordInput.classList.add('bg-primary-fixed/40');
+      setTimeout(() => {
+        usernameInput.classList.remove('bg-primary-fixed/40');
+        passwordInput.classList.remove('bg-primary-fixed/40');
+      }, 350);
+    }
+
+    async function triggerLogin() {
+      const btn = document.getElementById('btn-submit');
+      const errorBox = document.getElementById('login-error-box');
+      const errorMsg = document.getElementById('login-error-msg');
+      const nisNip = document.getElementById('username-input').value.trim();
+      const password = document.getElementById('password-input').value;
+      const originalText = btn.innerHTML;
+
+      errorBox.classList.add('hidden');
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-xl">sync</span><span>Mempersiapkan Misi...</span>';
+      btn.disabled = true;
+
+      try {
+        // Coba koneksi ke backend API Express.js
+        const response = await fetch(`${API_URL}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nis_nip: nisNip, password: password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          // Simpan sesi autentikasi ke localStorage
+          localStorage.setItem('lms_token', data.data.token);
+          localStorage.setItem('lms_user', JSON.stringify(data.data.user));
+
+          showSuccessModal(data.data.user);
+          return;
+        } else {
+          throw new Error(data.message || 'Login gagal');
+        }
+      } catch (err) {
+        // Fallback Client Simulation jika backend belum aktif
+        console.warn('Backend API tidak tersambung atau merespon galat. Menjalankan fallback simulasi...', err.message);
+
+        // Cek kesesuaian kredensial simulasi
+        const isStudentDemo = (nisNip === '10501' || nisNip === '202405012') && (password === 'siswa123' || password === 'budihebat2024');
+        const isTeacherDemo = (nisNip === '198501012010011001') && (password === 'guru123');
+
+        if (isStudentDemo || isTeacherDemo) {
+          const simulatedUser = isStudentDemo ? {
+            id: 2,
+            nis_nip: nisNip,
+            nama_lengkap: 'Budi Santoso',
+            role: 'siswa',
+            kelas: 'Kelas 5',
+            gamification: {
+              level: 3,
+              total_exp: 1250,
+              level_title: 'Penjelajah Pengetahuan',
+              streak_days: 5
+            }
+          } : {
+            id: 1,
+            nis_nip: nisNip,
+            nama_lengkap: 'Bapak Rofi, S.Pd.',
+            role: 'guru'
+          };
+
+          localStorage.setItem('lms_simulated_user', JSON.stringify(simulatedUser));
+          showSuccessModal(simulatedUser);
+        } else {
+          // Tampilkan pesan galat ramah anak
+          errorMsg.textContent = err.message || 'Nomor identitas atau kata sandi kamu belum pas. Yuk coba lagi!';
+          errorBox.classList.remove('hidden');
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+        }
+      }
+    }
+
+    function showSuccessModal(user) {
+      const modal = document.getElementById('success-modal');
+      const successName = document.getElementById('success-name');
+      const successDesc = document.getElementById('success-role-desc');
+      const successTitle = document.getElementById('success-title');
+
+      successName.textContent = user.nama_lengkap || 'Petualang Cilik';
+
+      if (user.role === 'guru') {
+        successTitle.textContent = 'Selamat Mengajar! 📖';
+        successDesc.textContent = 'Panel Guru & Kurikulum Merdeka';
+      } else {
+        successTitle.textContent = 'Selamat Datang! 🎉';
+        const exp = user.gamification?.total_exp || 1250;
+        const lvl = user.gamification?.level || 3;
+        successDesc.textContent = `Level ${lvl} • Petualang Cilik (${exp} EXP)`;
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      setTimeout(() => {
+        // Alihkan berdasarkan peran (Guru -> Portal Guru, Siswa -> Beranda Petualang)
+        if (user.role === 'guru') {
+          window.location.href = 'teacher-dashboard.html';
+        } else {
+          window.location.href = 'dashboard.html';
+        }
+      }, 1500);
+    }
+
+    function openHelpModal() {
+      const modal = document.getElementById('help-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeHelpModal() {
+      const modal = document.getElementById('help-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  </script>
+</body>
+</html>
+
